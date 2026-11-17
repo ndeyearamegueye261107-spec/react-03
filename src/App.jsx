@@ -4,7 +4,6 @@ import BookCard from "./components/BookCard";
 
 export default function App() {
 
-  // Tableau des livres
   const [books, setBooks] = useState([
     {id: 1, titre: "L'Alchimiste", auteur: "Paulo Coelho", estDisponible: true},
     {id: 2, titre: "Les Misérables", auteur: "Victor Hugo", estDisponible: false},
@@ -12,16 +11,13 @@ export default function App() {
     {id: 4, titre: "L'Étranger", auteur: "Albert Camus", estDisponible: true}
   ]);
 
-  // États du formulaire
   const [titre, setTitre] = useState("");
   const [auteur, setAuteur] = useState("");
 
-  // Compter les livres disponibles
   const livresDisponibles = books.filter(
     (book) => book.estDisponible
   ).length;
 
-  // Gestion des emprunts et des retours
   const onClickEmprunt = (bookId) => {
     setBooks(
       books.map((book) =>
@@ -32,7 +28,6 @@ export default function App() {
     );
   };
 
-  // Ajouter un nouveau livre
   const ajouterLivre = (e) => {
     e.preventDefault();
 
@@ -57,10 +52,8 @@ export default function App() {
   return (
     <div>
       <h1>Bibliothèque universitaire</h1>
-
       <h2>Livres disponibles : {livresDisponibles}</h2>
-
-      {/* Formulaire d'ajout */}
+     
       <form onSubmit={ajouterLivre}>
 
         <input
@@ -76,12 +69,11 @@ export default function App() {
           value={auteur}
           onChange={(e) => setAuteur(e.target.value)}
         />
-
         <button type="submit">Ajouter</button>
 
       </form>
 
-      {/* Affichage des livres */}
+      
       {books.map((book) => (
         <BookCard
           key={book.id}
